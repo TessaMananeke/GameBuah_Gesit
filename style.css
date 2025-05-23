@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+    background-color: #f0f9ff;
+    overflow: hidden;
+    user-select: none;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+  }
+  
+  #gameContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  h1 {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #ff6b6b;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    font-size: min(3.5em, 8vw);
+    z-index: 10;
+    pointer-events: none;
+  }
+  
+  .button {
+    position: absolute;
+    padding: min(15px, 3vw) min(25px, 5vw);
+    font-size: min(24px, 5vw);
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.2s;
+    font-weight: bold;
+    z-index: 100;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+  }
+  
+  .button:active {
+    transform: translateY(1px);
+  }
+  
+  #instructionBtn {
+    top: min(25px, 5vw);
+    left: min(25px, 5vw);
+    background-color: #4cc9f0;
+    color: white;
+  }
+  
+  #startBtn {
+    top: min(25px, 5vw);
+    right: min(25px, 5vw);
+    background-color: #38b000;
+    color: white;
+  }
+  
+  #restartBtn {
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ff6b6b;
+    color: white;
+    padding: min(20px, 4vw) min(40px, 8vw);
+    font-size: min(28px, 6vw);
+    z-index: 1000;
+  }
+  
+  #info {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(400px, 85%);
+    background: white;
+    padding: min(30px, 6vw);
+    border-radius: 20px;
+    border: 3px solid #4cc9f0;
+    font-size: min(20px, 4.5vw);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    z-index: 1000;
+    text-align: center;
+  }
+  
+  #info h2 {
+    color: #4cc9f0;
+    margin-bottom: min(15px, 3vw);
+    font-size: min(28px, 6vw);
+  }
+  
+  #info ul {
+    list-style-position: inside;
+    padding-left: 0;
+    text-align: left;
+    margin: min(15px, 3vw) 0;
+  }
+  
+  #info li {
+    margin-bottom: min(12px, 2.5vw);
+  }
+  
+  .play-note {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ff6b6b;
+    font-size: min(22px, 5vw);
+  }
+  
+  #gameCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #a0e7ff, #f0f9ff);
+    display: block;
+    z-index: 1;
+  }
+  
+  #scoreDisplay, #levelDisplay {
+    position: absolute;
+    background: white;
+    padding: min(15px, 3vw) min(20px, 4vw);
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    font-size: min(24px, 5vw);
+    z-index: 10;
+  }
+  
+  #scoreDisplay {
+    top: min(90px, 18vw);
+    right: min(30px, 6vw);
+    color: #ff6b6b;
+    border: 3px solid #ff6b6b;
+  }
+  
+  #levelDisplay {
+    top: min(150px, 30vw);
+    right: min(30px, 6vw);
+    color: #4cc9f0;
+    border: 3px solid #4cc9f0;
+  }
+  
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .game-over {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  #gameOverText {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: min(40px, 8vw);
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+    pointer-events: none;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  }
+  
+  #mobileControls {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
+    z-index: 20;
+  }
+  
+  .mobile-btn {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  }
+  
+  @media (max-width: 768px) {
+    #mobileControls {
+      display: flex;
+    }
+  
+    .mobile-btn {
+      width: 100px;
+      height: 100px;
+      font-size: 40px;
+    }
+  }
+  

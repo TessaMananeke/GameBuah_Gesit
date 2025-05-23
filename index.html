@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buah Gesit 🍓</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="gameContainer">
+    <button id="instructionBtn" class="button">📘 Instruksi</button>
+    <button id="startBtn" class="button">▶️ Mulai Game</button>
+    <button id="restartBtn" class="button">🔁 Main Lagi</button>
+
+    <div id="info">
+      <h2>Cara Bermain</h2>
+      <ul>
+        <li>Gunakan tombol panah <strong>kiri/kanan</strong> ⬅️ ➡️</li>
+        <li>Tangkap buah-buahan 🍎🍌🍉🍓</li>
+        <li>Hindari bom 💣 dan batu 🪨</li>
+        <li>Skor bertambah tiap buah ditangkap</li>
+        <li>Semakin tinggi level, semakin cepat!</li>
+        <li>Bonus 🍒 ⭐ memberi poin ekstra!</li>
+      </ul>
+      <p class="play-note">Selamat Bermain!</p>
+    </div>
+
+    <div id="scoreDisplay">Skor: 0</div>
+    <div id="levelDisplay">Level: 1</div>
+
+    <h1>Buah Gesit 🍓</h1>
+    <canvas id="gameCanvas"></canvas>
+    <div id="gameOverText"></div>
+
+    <div id="mobileControls">
+      <div class="mobile-btn" id="leftBtn">⬅️</div>
+      <div class="mobile-btn" id="rightBtn">➡️</div>
+    </div>
+  </div>
+
+  <audio id="collectSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" preload="auto"></audio>
+  <audio id="bombSound" src="https://assets.mixkit.co/sfx/preview/mixkit-explosion-hit-1684.mp3" preload="auto"></audio>
+  <audio id="bonusSound" src="https://assets.mixkit.co/sfx/preview/mixkit-bonus-earned-2065.mp3" preload="auto"></audio>
+
+  <script src="game.js"></script>
+</body>
+</html>
